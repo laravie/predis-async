@@ -18,7 +18,7 @@ if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
 
     git clone https://github.com/nrk/phpiredis.git \
     && pushd phpiredis \
-    && git checkout php7 \
+    && git checkout v1.0 \
     && phpize \
     && ./configure --enable-phpiredis \
     && make \
