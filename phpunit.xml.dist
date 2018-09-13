@@ -8,23 +8,14 @@
          processIsolation="false"
          stopOnError="false"
          stopOnFailure="false"
-         syntaxCheck="true"
-         beStrictAboutTestSize="true"
-         beStrictAboutTestsThatDoNotTestAnything="true">
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         verbose="true">
 
     <testsuites>
         <testsuite name="Predis\Async Test Suite">
             <directory>tests/Predis/Async</directory>
         </testsuite>
     </testsuites>
-
-    <groups>
-        <exclude>
-            <!-- <group>connected</group> -->
-            <!-- <group>disconnected</group> -->
-            <!-- <group>slow</group> -->
-        </exclude>
-    </groups>
 
     <filter>
         <whitelist>
