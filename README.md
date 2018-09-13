@@ -5,7 +5,6 @@
 [![Latest development][ico-version-dev]][link-packagist]
 [![Monthly installs][ico-downloads-monthly]][link-downloads]
 [![Build status][ico-travis]][link-travis]
-[![HHVM support][ico-hhvm]][link-hhvm]
 
 Asynchronous (non-blocking) version of [Predis](https://github.com/nrk/predis), the full-featured
 PHP client library for [Redis](http://redis.io), built on top of [React](http://reactphp.org/) to
