@@ -21,7 +21,7 @@ partially tested on [HHVM](http://www.hhvm.com), but support for this runtime sh
 experimental.
 
 Contributions are highly welcome and appreciated, feel free to open pull-requests with fixes or just
-[report issues](https://github.com/nrk/predis-async/issues) if you encounter weird behaviors and
+[report issues](https://github.com/laravie/predis-async/issues) if you encounter weird behaviors and
 blatant bugs.
 
 ## Main features ##
@@ -93,8 +93,8 @@ Please follow a few basic [commit guidelines](http://git-scm.com/book/ch5-2.html
 before opening pull requests.
 
 ### Project ###
-- [Source code](https://github.com/nrk/predis-async/)
-- [Issue tracker](https://github.com/nrk/predis-async/issues)
+- [Source code](https://github.com/laravie/predis-async/)
+- [Issue tracker](https://github.com/laravie/predis-async/issues)
 
 ## Author ##
 
@@ -104,14 +104,14 @@ before opening pull requests.
 
 The code for Predis\Async is distributed under the terms of the MIT license (see LICENSE).
 
-[ico-license]: https://img.shields.io/github/license/nrk/predis-async.svg?style=flat-square
+[ico-license]: https://img.shields.io/github/license/laravie/predis-async.svg?style=flat-square
 [ico-version-stable]: https://img.shields.io/packagist/v/predis/predis-async.svg?style=flat-square
 [ico-version-dev]: https://img.shields.io/packagist/vpre/predis/predis-async.svg?style=flat-square
 [ico-downloads-monthly]: https://img.shields.io/packagist/dm/predis/predis-async.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/nrk/predis-async.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/laravie/predis-async.svg?style=flat-square
 [ico-hhvm]: https://img.shields.io/hhvm/predis/predis-async.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/predis/predis-async
-[link-travis]: https://travis-ci.org/nrk/predis-async
+[link-travis]: https://travis-ci.org/laravie/predis-async
 [link-downloads]: https://packagist.org/packages/predis/predis-async/stats
 [link-hhvm]: http://hhvm.h4cc.de/package/predis/predis-async

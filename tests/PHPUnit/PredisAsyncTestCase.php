@@ -11,7 +11,7 @@
 
 namespace Predis\Async;
 
-use \PHPUnit_Framework_TestCase as StandardTestCase;
+use PHPUnit\Framework\TestCase as StandardTestCase;
 
 use Predis\Connection\Parameters;
 use Predis\Profile\Factory as ProfileFactory;
