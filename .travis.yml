@@ -16,12 +16,13 @@ services:
 
 install:
   - printf "\n" | pecl install -f redis
-  - ./travisci-install.sh
   - travis_retry composer self-update
 
 before_script:
-  - phpenv config-add phpiredis.ini
-  - travis_retry composer install --prefer-dist --no-interaction
+  - composer config discard-changes true
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
 
 script:
   - vendor/bin/phpunit -c phpunit.xml --testdox --verbose
