@@ -179,7 +179,7 @@ class ClientTest extends PredisAsyncTestCase
         $loop = $this->getEventLoop();
         $callback = function ($client, $connection) { };
 
-        $connection = $this->getMock('Predis\Async\Connection\ConnectionInterface');
+        $connection = $this->createMock('Predis\Async\Connection\ConnectionInterface');
         $connection->expects($this->once())->method('getEventLoop')->will($this->returnValue($loop));
         $connection->expects($this->once())->method('connect')->with($callback);
         $connection->expects($this->once())->method('disconnect');
@@ -197,7 +197,7 @@ class ClientTest extends PredisAsyncTestCase
         $loop = $this->getEventLoop();
         $callback = function ($client, $connection) { };
 
-        $connection = $this->getMock('Predis\Async\Connection\ConnectionInterface');
+        $connection = $this->createMock('Predis\Async\Connection\ConnectionInterface');
         $connection->expects($this->once())->method('getEventLoop')->will($this->returnValue($loop));
         $connection->expects($this->once())->method('isConnected');
 
@@ -212,7 +212,7 @@ class ClientTest extends PredisAsyncTestCase
     {
         $ping = ProfileFactory::getDefault()->createCommand('ping', []);
 
-        $profile = $this->getMock('Predis\Profile\ProfileInterface');
+        $profile = $this->createMock('Predis\Profile\ProfileInterface');
         $profile->expects($this->once())
                 ->method('createCommand')
                 ->with('ping', [])
