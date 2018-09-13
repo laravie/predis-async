@@ -12,5 +12,4 @@ before_script:
 matrix:
   allow_failures:
     - php: nightly
-    - php: 7.1
   fast_finish: true
