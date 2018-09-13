@@ -12,6 +12,11 @@
             "homepage": "http://clorophilla.net"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Predis\\Async\\": "src/"
+        }
+    },
     "require": {
         "php": ">=7.1",
         "predis/predis": "^1.0",
@@ -27,12 +32,10 @@
     "suggest": {
         "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
     },
-    "autoload": {
-        "psr-4": {"Predis\\Async\\": "src/"}
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

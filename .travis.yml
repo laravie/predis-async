@@ -1,15 +1,20 @@
 language: php
+
 php:
   - 7.1
   - 7.2
   - nightly
+
 services:
   - redis-server
+
 install:
   - ./travisci-install.sh
+
 before_script:
   - phpenv config-add phpiredis.ini
   - composer install
+
 matrix:
   allow_failures:
     - php: nightly
