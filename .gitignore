@@ -1,4 +1,12 @@
-.php-version
-phpunit.xml
-experiments/
-vendor/
+# Composer
+/composer.lock
+/vendor/*
+
+# PHPUnit
+/coverage/*
+/phpunit.xml
+/.phpunit.result.cache
+
+# Project
+/experiments/*
+/.php-version
