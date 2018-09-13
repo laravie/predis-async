@@ -105,13 +105,11 @@ before opening pull requests.
 The code for Predis\Async is distributed under the terms of the MIT license (see LICENSE).
 
 [ico-license]: https://img.shields.io/github/license/laravie/predis-async.svg?style=flat-square
-[ico-version-stable]: https://img.shields.io/packagist/v/predis/predis-async.svg?style=flat-square
-[ico-version-dev]: https://img.shields.io/packagist/vpre/predis/predis-async.svg?style=flat-square
-[ico-downloads-monthly]: https://img.shields.io/packagist/dm/predis/predis-async.svg?style=flat-square
+[ico-version-stable]: https://img.shields.io/packagist/v/laravie/predis-async.svg?style=flat-square
+[ico-version-dev]: https://img.shields.io/packagist/vpre/laravie/predis-async.svg?style=flat-square
+[ico-downloads-monthly]: https://img.shields.io/packagist/dm/laravie/predis-async.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/laravie/predis-async.svg?style=flat-square
-[ico-hhvm]: https://img.shields.io/hhvm/predis/predis-async.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/predis/predis-async
+[link-packagist]: https://packagist.org/packages/laravie/predis-async
 [link-travis]: https://travis-ci.org/laravie/predis-async
-[link-downloads]: https://packagist.org/packages/predis/predis-async/stats
-[link-hhvm]: http://hhvm.h4cc.de/package/predis/predis-async
+[link-downloads]: https://packagist.org/packages/laravie/predis-async/stats
