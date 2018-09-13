@@ -25,5 +25,3 @@ if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
     && make install \
     && popd
 fi
-
-composer self-update

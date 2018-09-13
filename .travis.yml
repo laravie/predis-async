@@ -10,10 +10,14 @@ services:
 
 install:
   - ./travisci-install.sh
+  - travis_retry composer self-update
 
 before_script:
   - phpenv config-add phpiredis.ini
-  - composer install
+  - travis_retry composer install --prefer-dist --no-interaction
+
+script:
+  - vendor/bin/phpunit -c phpunit.xml --testdox --verbose
 
 matrix:
   allow_failures:
