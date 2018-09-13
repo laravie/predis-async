@@ -24,8 +24,6 @@ if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then
     && make \
     && make install \
     && popd
-
-    phpenv config-add phpiredis.ini
 fi
 
 composer self-update
