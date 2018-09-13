@@ -183,7 +183,7 @@ abstract class AbstractConnection implements ConnectionInterface
     protected function disarmTimeoutMonitor()
     {
         if (isset($this->timeout)) {
-            $this->timeout->cancel();
+            $this->loop->cancelTimer($this->timeout);
             $this->timeout = null;
         }
     }
@@ -213,9 +213,9 @@ abstract class AbstractConnection implements ConnectionInterface
     {
         $this->disarmTimeoutMonitor();
 
-        $this->loop->nextTick(function () {
+        $this->loop->futureTick(function () {
             if (isset($this->stream)) {
-                $this->loop->removeStream($this->stream);
+                $this->loop->removeReadStream($this->stream);
                 $this->state->setState(State::DISCONNECTED);
                 $this->buffer->reset();
 
