@@ -32,7 +32,7 @@ class PhpiredisOption implements OptionInterface
             return false;
         }
 
-        if (!is_object($value) && $asbool = filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)) {
+        if (!\is_object($value) && $asbool = \filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)) {
             return $asbool;
         }
 
@@ -44,6 +44,6 @@ class PhpiredisOption implements OptionInterface
      */
     public function getDefault(OptionsInterface $options)
     {
-        return function_exists('phpiredis_reader_create');
+        return \function_exists('phpiredis_reader_create');
     }
 }

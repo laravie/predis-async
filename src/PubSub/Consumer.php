@@ -135,7 +135,7 @@ class Consumer
      */
     public function subscribe(/* channels */)
     {
-        $this->writeRequest('subscribe', func_get_args(), $this);
+        $this->writeRequest('subscribe', \func_get_args(), $this);
     }
 
     /**
@@ -145,7 +145,7 @@ class Consumer
      */
     public function psubscribe(/* channels */)
     {
-        $this->writeRequest('psubscribe', func_get_args(), $this);
+        $this->writeRequest('psubscribe', \func_get_args(), $this);
     }
 
     /**
@@ -155,7 +155,7 @@ class Consumer
      */
     public function unsubscribe(/* channels */)
     {
-        $this->writeRequest('unsubscribe', func_get_args());
+        $this->writeRequest('unsubscribe', \func_get_args());
     }
 
     /**
@@ -165,7 +165,7 @@ class Consumer
      */
     public function punsubscribe(/* channels */)
     {
-        $this->writeRequest('punsubscribe', func_get_args());
+        $this->writeRequest('punsubscribe', \func_get_args());
     }
 
     /**
@@ -198,7 +198,7 @@ class Consumer
         }
 
         if (isset($parsedPayload)) {
-            call_user_func($this->callback, $parsedPayload, $this);
+            \call_user_func($this->callback, $parsedPayload, $this);
         }
     }
 

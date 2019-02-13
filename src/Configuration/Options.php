@@ -33,11 +33,11 @@ class Options extends BaseOptions
      */
     protected function getHandlers()
     {
-        return array(
+        return [
             'profile'   => new ProfileOption(),
             'prefix'    => new PrefixOption(),
             'eventloop' => new EventLoopOption(),
             'phpiredis' => new PhpiredisOption(),
-        );
+        ];
     }
 }

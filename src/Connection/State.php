@@ -150,11 +150,11 @@ class State
     public function process($response)
     {
         if ($this->checkFlags(self::CONNECTED)) {
-            return call_user_func($this->processCallback, $this, $response);
+            return \call_user_func($this->processCallback, $this, $response);
         }
 
         if ($this->checkFlags(self::STREAM_CONTEXT)) {
-            return call_user_func($this->streamCallback, $this, $response);
+            return \call_user_func($this->streamCallback, $this, $response);
         }
 
         // TODO: we should handle invalid states in a different manner.

@@ -57,7 +57,7 @@ class Client
      */
     protected function createOptions($options)
     {
-        if (is_array($options)) {
+        if (\is_array($options)) {
             return new Configuration\Options($options);
         }
 
@@ -132,7 +132,7 @@ class Client
     protected function setErrorCallback(ConnectionInterface $connection, callable $callback)
     {
         $connection->setErrorCallback(function ($connection, $exception) use ($callback) {
-            call_user_func($callback, $this, $exception, $connection);
+            \call_user_func($callback, $this, $exception, $connection);
         });
     }
 
@@ -174,7 +174,7 @@ class Client
     public function connect(callable $callback)
     {
         $this->connection->connect(function ($connection) use ($callback) {
-            call_user_func($callback, $this, $connection);
+            \call_user_func($callback, $this, $connection);
         });
     }
 
@@ -217,7 +217,7 @@ class Client
      */
     public function __call($method, $arguments)
     {
-        if (!is_callable($callback = array_pop($arguments))) {
+        if (!\is_callable($callback = \array_pop($arguments))) {
             $arguments[] = $callback;
             $callback = function () { /* NOOP */ };
         }
@@ -262,7 +262,7 @@ class Client
                 $response = $command->parseResponse($response);
             }
 
-            call_user_func($callback, $response, $this, $command);
+            \call_user_func($callback, $response, $this, $command);
         };
     }
 
@@ -307,7 +307,7 @@ class Client
     {
         $pubsub = new PubSub\Consumer($this, $callback);
 
-        if (is_string($channels)) {
+        if (\is_string($channels)) {
             $channels = ['subscribe' => [$channels]];
         }
 

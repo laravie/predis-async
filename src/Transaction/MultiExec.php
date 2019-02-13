@@ -86,7 +86,7 @@ class MultiExec
         $command  = $this->client->createCommand('EXEC');
 
         $this->client->executeCommand($command, function ($responses, $client) use ($commands, $callback) {
-            $size = count($responses);
+            $size = \count($responses);
             $processed = [];
 
             for ($i = 0; $i < $size; $i++) {
@@ -102,7 +102,7 @@ class MultiExec
                 $processed[$i] = $response;
             }
 
-            call_user_func($callback, $processed, $client);
+            \call_user_func($callback, $processed, $client);
         });
     }
 

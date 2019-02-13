@@ -33,7 +33,7 @@ class StringBuffer
      */
     public function read($length)
     {
-        if (false === $buffer = substr($this->buffer, 0, $length)) {
+        if (false === $buffer = \substr($this->buffer, 0, $length)) {
             return '';
         }
 
@@ -46,7 +46,7 @@ class StringBuffer
     public function consume($length)
     {
         if ('' !== $buffer = $this->read($length)) {
-            $this->buffer = substr($this->buffer, strlen($buffer)) ?: '';
+            $this->buffer = \substr($this->buffer, \strlen($buffer)) ?: '';
         }
 
         return $buffer;
@@ -57,7 +57,7 @@ class StringBuffer
      */
     public function discard($length)
     {
-        $this->buffer = substr($this->buffer, $length) ?: '';
+        $this->buffer = \substr($this->buffer, $length) ?: '';
 
         return $length;
     }
@@ -69,7 +69,7 @@ class StringBuffer
     {
         $this->buffer .= $buffer;
 
-        return strlen($buffer);
+        return \strlen($buffer);
     }
 
     /**
@@ -85,7 +85,7 @@ class StringBuffer
      */
     public function length()
     {
-        return strlen($this->buffer);
+        return \strlen($this->buffer);
     }
 
     /**

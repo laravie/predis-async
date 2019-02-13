@@ -36,7 +36,7 @@ class PhpiredisStreamConnection extends AbstractConnection
      */
     public function __destruct()
     {
-        phpiredis_reader_destroy($this->reader);
+        \phpiredis_reader_destroy($this->reader);
 
         parent::__destruct();
     }
@@ -48,8 +48,8 @@ class PhpiredisStreamConnection extends AbstractConnection
     {
         $this->reader = phpiredis_reader_create();
 
-        phpiredis_reader_set_status_handler($this->reader, $this->getStatusHandler());
-        phpiredis_reader_set_error_handler($this->reader, $this->getErrorHandler());
+        \phpiredis_reader_set_status_handler($this->reader, $this->getStatusHandler());
+        \phpiredis_reader_set_error_handler($this->reader, $this->getErrorHandler());
     }
 
     /**
@@ -81,10 +81,10 @@ class PhpiredisStreamConnection extends AbstractConnection
      */
     public function parseResponseBuffer($buffer)
     {
-        phpiredis_reader_feed($reader = $this->reader, $buffer);
+        \phpiredis_reader_feed($reader = $this->reader, $buffer);
 
-        while (phpiredis_reader_get_state($reader) === PHPIREDIS_READER_STATE_COMPLETE) {
-            $this->state->process(phpiredis_reader_get_reply($reader));
+        while (\phpiredis_reader_get_state($reader) === PHPIREDIS_READER_STATE_COMPLETE) {
+            $this->state->process(\phpiredis_reader_get_reply($reader));
         }
     }
 
@@ -98,9 +98,9 @@ class PhpiredisStreamConnection extends AbstractConnection
         }
 
         $cmdargs = $command->getArguments();
-        array_unshift($cmdargs, $command->getId());
+        \array_unshift($cmdargs, $command->getId());
 
-        $this->buffer->append(phpiredis_format_command($cmdargs));
+        $this->buffer->append(\phpiredis_format_command($cmdargs));
         $this->commands->enqueue([$command, $callback]);
     }
 }

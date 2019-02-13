@@ -46,7 +46,7 @@ class Consumer
         $client = null;
 
         $pregCallback = function ($matches) use (&$database, &$client) {
-            if (2 === $count = count($matches)) {
+            if (2 === $count = \count($matches)) {
                 // Redis <= 2.4
                 $database = (int) $matches[1];
             }
@@ -60,14 +60,14 @@ class Consumer
             return ' ';
         };
 
-        $event = preg_replace_callback('/ \(db (\d+)\) | \[(\d+) (.*?)\] /', $pregCallback, $payload, 1);
-        @list($timestamp, $command, $arguments) = explode(' ', $event, 3);
+        $event = \preg_replace_callback('/ \(db (\d+)\) | \[(\d+) (.*?)\] /', $pregCallback, $payload, 1);
+        @list($timestamp, $command, $arguments) = \explode(' ', $event, 3);
 
         return (object) [
             'timestamp' => (float) $timestamp,
             'database'  => $database,
             'client'    => $client,
-            'command'   => substr($command, 1, -1),
+            'command'   => \substr($command, 1, -1),
             'arguments' => $arguments,
         ];
     }
@@ -82,7 +82,7 @@ class Consumer
     public function __invoke($payload, $client, $command)
     {
         $parsedPayload = $this->parsePayload($payload);
-        call_user_func($this->callback, $parsedPayload, $this);
+        \call_user_func($this->callback, $parsedPayload, $this);
     }
 
     /**

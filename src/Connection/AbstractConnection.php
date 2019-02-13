@@ -100,7 +100,7 @@ abstract class AbstractConnection implements ConnectionInterface
 
                 default:
                 process:
-                    call_user_func($callback, $response, $this, $command);
+                    \call_user_func($callback, $response, $this, $command);
                     break;
             }
         };
@@ -116,7 +116,7 @@ abstract class AbstractConnection implements ConnectionInterface
     {
         return function ($connection, $callback) {
             return function ($state, $response) use ($connection, $callback) {
-                call_user_func($callback, $response, $connection, null);
+                \call_user_func($callback, $response, $connection, null);
             };
         };
     }
@@ -138,18 +138,18 @@ abstract class AbstractConnection implements ConnectionInterface
         }
 
         if (!$stream = @stream_socket_client($uri, $errno, $errstr, 0, $flags)) {
-            $this->onError(new ConnectionException($this, trim($errstr), $errno));
+            $this->onError(new ConnectionException($this, \trim($errstr), $errno));
 
             return;
         }
 
-        stream_set_blocking($stream, 0);
+        \stream_set_blocking($stream, 0);
 
         $this->state->setState(State::CONNECTING);
 
         $this->loop->addWriteStream($stream, function ($stream) use ($callback) {
             if ($this->onConnect()) {
-                call_user_func($callback, $this);
+                \call_user_func($callback, $this);
                 $this->write();
             }
         });
@@ -171,7 +171,7 @@ abstract class AbstractConnection implements ConnectionInterface
     {
         $timer = $this->loop->addTimer($timeout, function ($timer) use ($callback) {
             $this->disconnect();
-            call_user_func($callback, $this, new ConnectionException($this, 'Connection timed out'));
+            \call_user_func($callback, $this, new ConnectionException($this, 'Connection timed out'));
         });
 
         return $timer;
@@ -193,7 +193,7 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     public function isConnected()
     {
-        return isset($this->stream) && stream_socket_get_name($this->stream, true) !== false;
+        return isset($this->stream) && \stream_socket_get_name($this->stream, true) !== false;
     }
 
     /**
@@ -256,7 +256,7 @@ abstract class AbstractConnection implements ConnectionInterface
         // The following code is a terrible hack but it seems to be the only way
         // to detect connection refused errors with PHP's stream sockets. You
         // should blame PHP for this, as usual.
-        if (stream_socket_get_name($stream, true) === false) {
+        if (\stream_socket_get_name($stream, true) === false) {
             return $this->onError(new ConnectionException($this, "Connection refused"));
         }
 
@@ -279,7 +279,7 @@ abstract class AbstractConnection implements ConnectionInterface
         $this->disconnect();
 
         if (isset($this->errorCallback)) {
-            call_user_func($this->errorCallback, $this, $exception);
+            \call_user_func($this->errorCallback, $this, $exception);
         }
 
         return false;
@@ -330,11 +330,11 @@ abstract class AbstractConnection implements ConnectionInterface
 
         $buffer = $this->buffer->read(4096);
 
-        if (-1 === $ret = @stream_socket_sendto($stream, $buffer)) {
+        if (-1 === $ret = @\stream_socket_sendto($stream, $buffer)) {
             return $this->onError(new ConnectionException($this, 'Error while writing bytes to the server'));
         }
 
-        $this->buffer->discard(min($ret, strlen($buffer)));
+        $this->buffer->discard(\min($ret, \strlen($buffer)));
     }
 
     /**
@@ -342,7 +342,7 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     public function read()
     {
-        $buffer = stream_socket_recvfrom($this->getResource(), 4096);
+        $buffer = \stream_socket_recvfrom($this->getResource(), 4096);
 
         if ($buffer === false || $buffer === '') {
             return $this->onError(new ConnectionException($this, 'Error while reading bytes from the server'));
