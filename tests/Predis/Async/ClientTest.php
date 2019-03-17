@@ -127,11 +127,12 @@ class ClientTest extends PredisAsyncTestCase
 
     /**
      * @group disconnected
-     * @expectedException Predis\ClientException
-     * @expectedExceptionMessage Client and connection must share the same event loop.
      */
     public function testConnectionAndClientMustShareSameEventLoop()
     {
+        $this->expectException('Predis\ClientException');
+        $this->expectExceptionMessage('Client and connection must share the same event loop.');
+
         $parameters = $this->getParameters();
         $eventloop  = $this->getEventLoop();
 
@@ -248,11 +249,12 @@ class ClientTest extends PredisAsyncTestCase
 
     /**
      * @group disconnected
-     * @expectedException Predis\ClientException
-     * @expectedExceptionMessage Command 'INVALIDCOMMAND' is not a registered Redis command
      */
     public function testThrowsExceptionOnNonRegisteredRedisCommand()
     {
+        $this->expectException('Predis\ClientException');
+        $this->expectExceptionMessage("Command 'INVALIDCOMMAND' is not a registered Redis command");
+
         $this->getClient()->invalidCommand();
     }
 
