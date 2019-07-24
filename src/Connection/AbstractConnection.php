@@ -233,7 +233,7 @@ abstract class AbstractConnection implements ConnectionInterface
             return $this->stream;
         }
 
-        $this->stream = $this->createResource(function () { /* NOOP */ });
+        $this->stream = $this->createResource(static function () { /* NOOP */ });
 
         return $this->stream;
     }

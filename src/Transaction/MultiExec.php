@@ -44,7 +44,7 @@ class MultiExec
     {
         $command = $this->client->createCommand('MULTI');
 
-        $this->client->executeCommand($command, function ($response) {
+        $this->client->executeCommand($command, static function ($response) {
             if (false === $response) {
                 throw new RuntimeException('Could not initialize a MULTI / EXEC transaction');
             }
@@ -64,7 +64,7 @@ class MultiExec
         $commands = $this->commands;
         $command = $this->client->createCommand($method, $arguments);
 
-        $this->client->executeCommand($command, function ($response, $_, $command) use ($commands) {
+        $this->client->executeCommand($command, static function ($response, $_, $command) use ($commands) {
             if (!$response instanceof StatusResponse || $response != 'QUEUED') {
                 throw new RuntimeException('Unexpected response in MULTI / EXEC [expected +QUEUED]');
             }
@@ -85,7 +85,7 @@ class MultiExec
         $commands = $this->commands;
         $command  = $this->client->createCommand('EXEC');
 
-        $this->client->executeCommand($command, function ($responses, $client) use ($commands, $callback) {
+        $this->client->executeCommand($command, static function ($responses, $client) use ($commands, $callback) {
             $size = \count($responses);
             $processed = [];
 
