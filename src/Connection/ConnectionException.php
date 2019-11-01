@@ -20,4 +20,5 @@ use Predis\Async\CommunicationException;
  */
 class ConnectionException extends CommunicationException
 {
+    //
 }

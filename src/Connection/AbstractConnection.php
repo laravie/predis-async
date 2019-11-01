@@ -73,7 +73,7 @@ abstract class AbstractConnection implements ConnectionInterface
     protected function getProcessCallback()
     {
         return function ($state, $response) {
-            list($command, $callback) = $this->commands->dequeue();
+            [$command, $callback] = $this->commands->dequeue();
 
             switch ($command->getId()) {
                 case 'SUBSCRIBE':
@@ -155,7 +155,7 @@ abstract class AbstractConnection implements ConnectionInterface
         });
 
         $this->timeout = $this->armTimeoutMonitor(
-            $parameters->timeout ?: 5, $this->errorCallback ?: function () { }
+            $parameters->timeout ?: 5, $this->errorCallback ?: static function () { }
         );
 
         return $stream;

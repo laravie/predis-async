@@ -45,7 +45,7 @@ class Consumer
         $database = 0;
         $client = null;
 
-        $pregCallback = function ($matches) use (&$database, &$client) {
+        $pregCallback = static function ($matches) use (&$database, &$client) {
             if (2 === $count = \count($matches)) {
                 // Redis <= 2.4
                 $database = (int) $matches[1];

@@ -219,7 +219,7 @@ class Client
     {
         if (!\is_callable($callback = \array_pop($arguments))) {
             $arguments[] = $callback;
-            $callback = function () { /* NOOP */ };
+            $callback = static function () { /* NOOP */ };
         }
 
         $this->executeCommand($this->createCommand($method, $arguments), $callback);
