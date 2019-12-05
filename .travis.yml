@@ -10,8 +10,8 @@ php:
 env:
   matrix:
     - setup=basic
-    - setup=lowest
     - setup=stable
+    - setup=lowest
 
 services:
   - redis-server
