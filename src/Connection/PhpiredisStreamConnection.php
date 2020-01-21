@@ -59,7 +59,7 @@ class PhpiredisStreamConnection extends AbstractConnection
      */
     protected function getStatusHandler()
     {
-        return function ($payload) {
+        return static function ($payload) {
             return StatusResponse::get($payload);
         };
     }
@@ -71,7 +71,7 @@ class PhpiredisStreamConnection extends AbstractConnection
      */
     protected function getErrorHandler()
     {
-        return function ($errorMessage) {
+        return static function ($errorMessage) {
             return new ErrorResponse($errorMessage);
         };
     }

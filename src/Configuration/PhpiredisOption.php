@@ -28,11 +28,11 @@ class PhpiredisOption implements OptionInterface
      */
     public function filter(OptionsInterface $options, $value)
     {
-        if (!$value) {
+        if (! $value) {
             return false;
         }
 
-        if (!\is_object($value) && $asbool = \filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)) {
+        if (! \is_object($value) && $asbool = \filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)) {
             return $asbool;
         }
 
