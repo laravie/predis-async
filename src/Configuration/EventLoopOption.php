@@ -30,7 +30,7 @@ class EventLoopOption implements OptionInterface
      */
     public function filter(OptionsInterface $options, $value)
     {
-        if (!$value instanceof LoopInterface) {
+        if (! $value instanceof LoopInterface) {
             throw new \InvalidArgumentException('Invalid value for the eventloop option');
         }
 

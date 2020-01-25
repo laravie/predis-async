@@ -65,7 +65,7 @@ class MultiExec
         $command = $this->client->createCommand($method, $arguments);
 
         $this->client->executeCommand($command, static function ($response, $_, $command) use ($commands) {
-            if (!$response instanceof StatusResponse || $response != 'QUEUED') {
+            if (! $response instanceof StatusResponse || $response != 'QUEUED') {
                 throw new RuntimeException('Unexpected response in MULTI / EXEC [expected +QUEUED]');
             }
 

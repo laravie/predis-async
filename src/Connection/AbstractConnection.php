@@ -114,8 +114,8 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     protected function getStreamingWrapperCreator()
     {
-        return function ($connection, $callback) {
-            return function ($state, $response) use ($connection, $callback) {
+        return static function ($connection, $callback) {
+            return static function ($state, $response) use ($connection, $callback) {
                 \call_user_func($callback, $response, $connection, null);
             };
         };
@@ -201,7 +201,7 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     public function connect(callable $callback)
     {
-        if (!$this->isConnected()) {
+        if (! $this->isConnected()) {
             $this->stream = $this->createResource($callback);
         }
     }
