@@ -1,10 +1,13 @@
 # Predis\Async #
 
-[![Build Status](https://travis-ci.org/laravie/predis-async.svg?branch=master)](https://travis-ci.org/laravie/predis-async)
+
+[![tests](https://github.com/laravie/predis-async/workflows/tests/badge.svg?branch=master)](https://github.com/laravie/predis-async/actions?query=workflow%3Atests+branch%3Amaster)
 [![Latest Stable Version](https://poser.pugx.org/laravie/predis-async/v/stable)](https://packagist.org/packages/laravie/predis-async)
 [![Total Downloads](https://poser.pugx.org/laravie/predis-async/downloads)](https://packagist.org/packages/laravie/predis-async)
 [![Latest Unstable Version](https://poser.pugx.org/laravie/predis-async/v/unstable)](https://packagist.org/packages/laravie/predis-async)
 [![License](https://poser.pugx.org/laravie/predis-async/license)](https://packagist.org/packages/laravie/predis-async)
+[![Coverage Status](https://coveralls.io/repos/github/laravie/predis-async/badge.svg?branch=master)](https://coveralls.io/github/laravie/predis-async?branch=master)
+
 
 Asynchronous (non-blocking) version of [Predis](https://github.com/nrk/predis), the full-featured
 PHP client library for [Redis](http://redis.io), built on top of [React](http://reactphp.org/) to
